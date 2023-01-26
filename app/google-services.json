@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "321498297148",
+    "project_id": "dherrom0706",
+    "storage_bucket": "dherrom0706.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321498297148:android:8bdafebfeec94ac5006439",
+        "android_client_info": {
+          "package_name": "www.iesmurgi.firebaseproyectodionisio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321498297148-smun3af3c79hg9khg3gf2m2v8n99eki2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "www.iesmurgi.firebaseproyectodionisio",
+            "certificate_hash": "2cef384ce4e99f47dff37b2a8c87e193b166b84c"
+          }
+        },
+        {
+          "client_id": "321498297148-9ds61itrje4h29ca8rm0c2db2ukstk7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXHavJ-f54DLd_TUpT1ldMDEmKUPcEhX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321498297148-9ds61itrje4h29ca8rm0c2db2ukstk7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
