@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import www.iesmurgi.firebaseproyectodionisio.databinding.ActivityPerfilBinding
 
 class PerfilActivity : AppCompatActivity() {
@@ -30,9 +32,14 @@ class PerfilActivity : AppCompatActivity() {
 
         var btnBorrarUsuario = binding.btnBorrarUser
         btnBorrarUsuario.setOnClickListener {
+            borrarDatosUser()
             borrarUsuario()
         }
 
+    }
+
+    private fun borrarDatosUser() {
+        Firebase.firestore.collection("user").document(user?.email.toString()).delete()
     }
 
     private fun borrarUsuario() {

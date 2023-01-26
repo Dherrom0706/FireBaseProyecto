@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
@@ -30,23 +31,27 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-
-
+        var email:Editable
+        var pass: Editable
         val btnIniciar = binding.btnSesion
         btnIniciar.setOnClickListener {
-            var email = binding.tvUser.text
-            var pass = binding.tvPass.text
+            email = binding.tvUser.text
+            pass = binding.tvPass.text
             iniciarSesion(email.toString(), pass.toString())
         }
 
 
         val btnRegistro = binding.btnRegistro
-        //btnRegistro.setOnClickListener { crearUsuario(email.toString(), pass.toString()) }
+        btnRegistro.setOnClickListener {
+            email = binding.tvUser.text
+            pass = binding.tvPass.text
+            crearUsuario(email.toString(), pass.toString())
+        }
 
         /*val btnGoogle = binding.imagenIniciarConGoogle
-        btnGoogle.setOnClickListener { iniciarSesionGoogle() }
+        btnGoogle.setOnClickListener { iniciarSesionGoogle() }*/
 
-         */
+
 
     }
 
@@ -87,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             clave
         ).addOnCompleteListener {
             if (it.isSuccessful) {
-                //writeNewUser(email)
+                writeNewUser(email)
                 abrirPerfil()
             } else {
                 showErrorAlert()
@@ -96,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /* private fun writeNewUser(email: String) {
+    private fun writeNewUser(email: String) {
          val db = Firebase.firestore
 
          val data = hashMapOf(
@@ -112,7 +117,7 @@ class MainActivity : AppCompatActivity() {
              .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writting document", e) }
      }
 
-     */
+
 
     fun iniciarSesion(email: String, clave: String) {
 
