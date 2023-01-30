@@ -10,4 +10,5 @@
     <string name="msg_restablecer">Se ha enviado un correo a su email para poder restablecer la clave</string>
     <string name="borrar_user">Borrar usuario</string>
     <string name="borrar_completado">Usuario borrado exitosamente</string>
+    <string name="modificar">Modificar datos user</string>
 </resources>

@@ -48,14 +48,14 @@ class MainActivity : AppCompatActivity() {
             crearUsuario(email.toString(), pass.toString())
         }
 
-        /*val btnGoogle = binding.imagenIniciarConGoogle
-        btnGoogle.setOnClickListener { iniciarSesionGoogle() }*/
+        val btnGoogle = binding.imagenIniciarConGoogle
+        btnGoogle.setOnClickListener { iniciarSesionGoogle() }
 
 
 
     }
 
-    /*private fun iniciarSesionGoogle() {
+    private fun iniciarSesionGoogle() {
         val providerGoogle = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
         startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providerGoogle).build(),
             Companion.RC_SIGN_IN
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-    }*/
+    }
 
     override fun onStart() {
         super.onStart()
