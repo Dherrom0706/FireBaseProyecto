@@ -27,7 +27,7 @@ class PerfilActivity : AppCompatActivity() {
 
         var btnRestablecerContra = binding.btnRecuperarContra
         btnRestablecerContra.setOnClickListener {
-            restablecerClave()
+
         }
 
         var btnBorrarUsuario = binding.btnBorrarUser
@@ -56,15 +56,7 @@ class PerfilActivity : AppCompatActivity() {
         }
     }
 
-    private fun restablecerClave() {
-        auth.sendPasswordResetEmail(user?.email.toString()).addOnCompleteListener {
-            if (it.isSuccessful){
-                Toast.makeText(this,this.resources.getString(R.string.msg_restablecer),Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this,it.exception.toString(),Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+
 
     private fun setUp(email: String) {
 

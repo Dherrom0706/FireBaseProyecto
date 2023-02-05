@@ -15,7 +15,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import www.iesmurgi.firebaseproyectodionisio.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class  MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        binding.fondo.background = resources.getDrawable(R.drawable.fondo)
         var email:Editable
         var pass: Editable
         val btnIniciar = binding.btnSesion
@@ -40,18 +41,19 @@ class MainActivity : AppCompatActivity() {
             iniciarSesion(email.toString(), pass.toString())
         }
 
+        binding.tvOlvidar.setOnClickListener {
+            var intent = Intent(this,ContraOlvidada::class.java)
+            startActivity(intent)
+        }
 
-        val btnRegistro = binding.btnRegistro
-        btnRegistro.setOnClickListener {
-            email = binding.tvUser.text
-            pass = binding.tvPass.text
-            crearUsuario(email.toString(), pass.toString())
+        val tvRegistro = binding.tvRegistrar
+        tvRegistro.setOnClickListener {
+            var intent = Intent(this,Register::class.java)
+            startActivity(intent)
         }
 
         val btnGoogle = binding.imagenIniciarConGoogle
         btnGoogle.setOnClickListener { iniciarSesionGoogle() }
-
-
 
     }
 
@@ -85,65 +87,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun crearUsuario(email: String, clave: String) {
+    fun iniciarSesion(email: String, clave: String) {
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(
             email,
             clave
         ).addOnCompleteListener {
             if (it.isSuccessful) {
-                writeNewUser(email)
                 abrirPerfil()
             } else {
-                showErrorAlert()
+                Toast.makeText(this, "Intento de login fallido", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
-    private fun writeNewUser(email: String) {
-         val db = Firebase.firestore
-
-         val data = hashMapOf(
-             "email" to email,
-             "usuario" to "nouser",
-             "nacionalidad" to "nonacionalidad",
-             "edad" to 0
-         )
-
-         db.collection("user").document(email)
-             .set(data)
-             .addOnSuccessListener { Log.d(ContentValues.TAG,"DocumentSnapshot successfully written!") }
-             .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writting document", e) }
-     }
-
-
-
-    fun iniciarSesion(email: String, clave: String) {
-
-
-
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(
-                email,
-                clave
-            ).addOnCompleteListener {
-                if (it.isSuccessful) {
-
-                    abrirPerfil()
-                } else {
-                    Toast.makeText(this, "Intento de login fallido", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-
-
-    }
-
-    private fun showErrorAlert() {
-        Toast.makeText(this, "Registro fallido", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun abrirPerfil() {
+    fun abrirPerfil() {
         startActivity(Intent(this, PerfilActivity::class.java))
         finish()
     }
