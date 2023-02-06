@@ -25,4 +25,14 @@
     <string name="reestablecer">Reestablecer Contraseña</string>
     <string name="introduzca_mail">Porfavor, introduzca su email para poder enviar el correo</string>
     <string name="email_enviado">Se ha enviado el correo para resetear su clave</string>
+    <string name="bienvenido">Bienvenido, </string>
+    <string name="correo">Correo </string>
+    <string name="nacionalidad">Nacionalidad</string>
+    <string name="edad">Edad</string>
+    <string name="modificar_title">Modificar datos usuario</string>
+    <string name="cambiar_user">Introduzca su usuario deseado</string>
+    <string name="cambiar_nacionalidad">Introduzca su nacionalidad</string>
+    <string name="cambiar_edad">Introduzca su edad</string>
+    <string name="btn_cambiar_texto">Realizar cambios</string>
+    <string name="cambio_correcto">Cambio en los datos realizados de forma correcta</string>
 </resources>
